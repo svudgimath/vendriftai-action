@@ -1,0 +1,40 @@
+name: 'VendriftAI'
+description: 'Detect breaking API changes and open automated fix PRs — Dependabot for APIs'
+author: 'VendriftAI'
+branding:
+  icon: 'shield'
+  color: 'purple'
+
+inputs:
+  token:
+    description: 'GitHub token for reading repo files and creating PRs. Commits pushed with the default GITHUB_TOKEN do not start your workflows; pass a GitHub App or personal token to have CI run on VendriftAI branches.'
+    required: false
+    default: ${{ github.token }}
+  anthropic-api-key:
+    description: 'Anthropic API key, used inside your CI to write fixes (never sent to VendriftAI). Required for scans; may instead be set as the ANTHROPIC_API_KEY env var on this step.'
+    required: false
+    default: ''
+  anthropic-workspace-id:
+    description: 'The Anthropic workspace to bill, for a key that is not scoped to one (the API then asks for it). May instead be set as the ANTHROPIC_WORKSPACE_ID env var.'
+    required: false
+    default: ''
+  dry-run:
+    description: 'Scan and generate fixes without opening PRs'
+    required: false
+    default: 'false'
+  run-tests:
+    description: 'Run the repository''s own tests (npm test, pytest, go test, cargo test, mvn/gradle test) on each fix before its PR opens, besides building it. Set to false when the tests need services or secrets the runner does not have.'
+    required: false
+    default: 'true'
+  vendriftai-api-key:
+    description: 'Team API key from the VendriftAI Setup page. Reports each run''s PRs, findings, and sign-offs to your team''s dashboard — metadata only, never code.'
+    required: false
+    default: ''
+  vendriftai-url:
+    description: 'Base URL of your VendriftAI instance (shown on the Setup page). Required with vendriftai-api-key.'
+    required: false
+    default: ''
+
+runs:
+  using: 'node24'
+  main: 'index.mjs'

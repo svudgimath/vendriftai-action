@@ -1,0 +1,2 @@
+# Ship every file byte for byte: grammars are binary, and the bundle runs as written.
+* -text
