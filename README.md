@@ -4,7 +4,7 @@ Dependabot for APIs: VendriftAI follows the API clients your code depends on, up
 that migrate your code to the new version, checked by your build and tests before they open. It runs inside your own
 GitHub Actions, with your own Anthropic API key. Your code never leaves your CI.
 
-This repository holds the compiled Action (v0.1.0).
+This repository holds the compiled Action (v1.0.1).
 
 ## Use it
 

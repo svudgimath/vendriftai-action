@@ -2,6 +2,7 @@ import { createRequire as __vaiRequire } from "node:module";
 import { fileURLToPath as __vaiPath } from "node:url";
 import { dirname as __vaiDir, join as __vaiJoin } from "node:path";
 const require = __vaiRequire(import.meta.url);
+process.noDeprecation = true;   // bundled libraries' deprecation notices aren't the customer's to act on
 process.env.VENDRIFTAI_GRAMMARS_DIR ??= __vaiJoin(__vaiDir(__vaiPath(import.meta.url)), "grammars");
 for (const [k, v] of Object.entries(process.env)) if (k.startsWith("INPUT_") && k.includes("-")) process.env[k.replace(/-/g, "_")] ??= v;
 if ((process.env.INPUT_RUN_TESTS ?? "").toLowerCase() === "false") process.env.VENDRIFTAI_RUN_TESTS ??= "0";
